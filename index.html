@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="shortcut icon" href="assets/img/list-favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="/assets/js/main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>To-Do List</h1>
+    </header>
+    <main>
+        <section class="add-task-input">
+            <label for="add-task" name="Type the task to be added"></label>
+            <input type="text" name="add-task" id="add-task" placeholder="Add your new task" tabindex="1">
+            <button id="add-task-btn" class="add-task-btn" tabindex="2" onclick="addTask()"><img src="assets/img/add_btn.svg" alt=""></button>
+        </section>
+
+        <section class="task-list">
+            <ul id="task-list">
+                <li class="unchecked checked" tabindex="3">
+                    Task 1 <span class="delete-task" tabindex="4"></span>
+                </li>
+                <!-- <li class="unchecked checked" tabindex="5">
+                    Task 2 <span class="delete-task" tabindex="6"></span>
+                </li>
+                <li class="unchecked checked" tabindex="7">
+                    Task 3 <span class="delete-task" tabindex="8"></span>
+                </li>
+                <li class="unchecked checked" tabindex="9">
+                    Task 4 <span class="delete-task" tabindex="10"></span>
+                </li> -->
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
