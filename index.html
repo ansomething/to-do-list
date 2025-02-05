@@ -14,42 +14,33 @@
     <header>
         <h1>To-Do List</h1>
     </header>
+
     <main>
         <section class="add-task-input">
             <label for="add-task" name="Type the task to be added"></label>
             <input type="text" name="add-task" id="add-task" placeholder="Add your new task">
-            <button id="add-task-btn" class="add-task-btn" onclick="addTask()"><img src="assets/img/add_btn.svg"
-                    alt=""></button>
+            <button class="add-task-btn" onclick="addTask()">
+                <img src="assets/img/add_btn.svg" alt="">
+            </button>
         </section>
 
-        <section class="task-container">
-            <div id="task-list" class="item-container">
-                <input type="checkbox" name="list-item" id="list-item">
-                <label class="" for="list-item"> Task 1
-                </label>
-            </div>
-
-            <button class="delete-task-btn"><img src="assets/img/delete.svg" alt=""></button>
-            <!-- <ul id="task-list" class="list-container">
-                <li>
-
-                </li> -->
-
-            <!-- <button class="unchecked checked"><img src="assets/img/unchecked.svg" alt=""></button>
-                <li class="list-item"><span>O</span>Task 1</li>
-                <button class="delete-task-btn"><img src="assets/img/checked.svg" alt=""></button> -->
-            </ul>
-
-
+        <section class="task-container" id="task-list">
+            <!-- div, checkbox, label and button added with js -->
         </section>
+
         <section class="counter-container">
             <hr>
             <p><span id="counter">0</span> Items</p>
         </section>
     </main>
+
     <footer>
-        <p>Made by <a href="https://github.com/ansomething" target="_blank"><img class="git-img"
-                    src="assets/img/github.svg" alt=""> Andressa Vieira</a>.</p>
+        <p>Made by
+            <a href="https://github.com/ansomething" target="_blank">
+                <img class="git-img" src="assets/img/github.svg" alt="">
+                Andressa Vieira
+            </a>.
+        </p>
     </footer>
 </body>
 

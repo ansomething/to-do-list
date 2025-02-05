@@ -8,6 +8,8 @@
     --LIGHT-RED: #F2BBBB;
     --WHITE-SMOKE: #f5f5f5;
     --WHITE: #ffffff;
+    --GREEN: #5ac55a;
+    --GRAY: #808080;
     --BOX-SHADOW-COLOR: #0000003c;
 }
 
@@ -75,12 +77,13 @@ section.add-task-input {
     width: clamp(35em, 40vw, 50em);
 }
 
-.add-task-input input[type=text] {
+input[type=text] {
     border: none;
     font-size: clamp(1.5rem, 2vw, 1.8rem);
     font-weight: bold;
     border-radius: .5em;
-    padding: 1.2rem;
+    padding: 1em;
+    padding-right: 3em;
     width: clamp(30em, 50vw, 60em);
     box-shadow: .1rem .1rem .2rem var(--BOX-SHADOW-COLOR);
 }
@@ -105,27 +108,31 @@ section.add-task-input {
 .task-container {
     width: clamp(30em, 40vw, 50em);
     height: 40vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--LIGHT-RED) var(--WHITE-SMOKE);
+    padding: 1em;
 }
 
 .item-container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     background-color: var(--WHITE);
-    font-size: clamp(1.5rem, 2vw, 1.8rem);
+    font-size: clamp(1.5rem, 2vw, 1.7rem);
     padding: .8em;
     border: .1rem solid var(--LIGHT-BLUE);
     border-radius: 1em;
     width: 100%;
     font-weight: 600;
     user-select: none;
+    margin-bottom: 1em;
 }
 
 input[type="checkbox"] {
-    height: clamp(2.5rem, 4vh, 6rem);
-    width: clamp(2.5rem, 4vw, 6rem);
     margin-right: 1em;
-    accent-color: var(--LIGHT-BLUE);
+    appearance: none;
 }
 
 input[type="checkbox"],
@@ -133,31 +140,35 @@ label {
     cursor: pointer;
 }
 
-.ckecked::before::after {
-    display: none;
+input[type="checkbox"]::before {
     content: "";
-    position: relative;
-    width: 2.7rem;
-    height: 2.7rem;
-    left: -3.2em;
-    background-color: var(--WHITE);
-    border-radius: 50%;
-    background-image: url(../img/checked.svg);
+    display: inline-block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-image: url(../img/unchecked.svg);
+    background-size: contain;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
-*/ .disabled {
+input[type="checkbox"]:checked::before {
+    content: "";
+    display: inline-block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: var(--GREEN);
+    border-radius: 50%;
+    background-image: url(../img/checked.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.checked {
     text-decoration: line-through;
 }
 
 .delete-task-btn {
     width: 24px;
     height: 24px;
-    position: relative;
-    float: right;
-    top: -3.1em;
-    right: 1em;
 }
 
 .delete-task-btn:hover,
