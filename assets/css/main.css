@@ -133,10 +133,6 @@ input[type=text] {
 input[type="checkbox"] {
     margin-right: 1em;
     appearance: none;
-}
-
-input[type="checkbox"],
-label {
     cursor: pointer;
 }
 
@@ -166,11 +162,14 @@ input[type="checkbox"]:checked::before {
     text-decoration: line-through;
 }
 
+.edit-task-btn,
 .delete-task-btn {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
 }
 
+.edit-task-btn:hover,
+.edit-task-btn:focus,
 .delete-task-btn:hover,
 .delete-task-btn:focus {
     filter: brightness(150%);

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const taskInput = document.getElementById("add-task"); // input element
 const taskList = document.getElementById("task-list"); // section element for the list
 const taskCount = document.getElementById("counter"); // span element for the counter
-const deleteBtn = document.getElementsByClassName("delete-task-btn"); // button to delete the task
+// const deleteBtn = document.getElementsByClassName("delete-task-btn"); // button to delete the task
 
 // # enable enter key press to add task
 taskInput.addEventListener("keydown", function (event) {
@@ -47,17 +47,28 @@ const displayTasks = () => {
     div.className = "item-container";
     div.innerHTML = `
         <input type="checkbox"
+        name="input-checkbox"
         id="input-${index}"
         class="checkbox-task"
         ${item.checked ? "checked" : ""}>
 
         <label 
-        for="input-${index}" onclick="editTask(${index})"
+        id="label-${index}"
+        for="input-${index}"
         class="${item.checked ? "checked" : ""}">
         ${item.task}
         </label>
 
-        <button class="delete-task-btn"><img src="assets/img/delete.svg" alt=""></button>
+        <div>
+          <button id="edit-${index}"
+          class="edit-task-btn">
+          <img src="assets/img/edit.svg" alt="">
+          </button>
+
+          <button id="delete-${index}" class="delete-task-btn">
+          <img src="assets/img/delete.svg" alt="">
+          </button>
+        </div>
     `;
     /*
     ${item.checked ? "checked" : ""}
@@ -67,15 +78,24 @@ const displayTasks = () => {
     for the label: if it's true it will add the class .checked
     */
 
+    taskList.appendChild(div);
+
     if (item.checked) {
       div.style.borderColor = "#808080";
     }
-
+    // # event listener for the checked value
     div.querySelector(".checkbox-task").addEventListener("change", () => {
       checkedTask(index);
     });
+    // # event listener for the edit button
+    div.querySelector(".edit-task-btn").addEventListener("click", () => {
+      editTask(index);
+    });
 
-    taskList.appendChild(div);
+    // # event listener for the delete button
+    div.querySelector(".delete-task-btn").addEventListener("click", () => {
+      deleteTask(index);
+    });
   });
   taskCount.innerHTML = taskData.length;
 };
@@ -87,12 +107,29 @@ const checkedTask = (i) => {
   displayTasks();
 };
 
+// # enable delete task
+const deleteTask = (i) => {
+  taskData.splice(i, 1);
+  saveToLocalStorage();
+  displayTasks();
+};
+
 // # enable task edit
-function editTask(i) {}
+const editTask = (i) => {
+  const taskLabel = document.getElementById(`label-${i}`);
+  const oldTask = taskData[i].task;
+  const newInputField = document.createElement("input");
 
-// # function and event listener for the delete button
-function deleteTask() {
-  alert("Deleted.");
-}
+  newInputField.value = oldTask;
+  taskLabel.replaceWith(newInputField);
+  newInputField.focus();
 
-deleteBtn.addEventListener("click", deleteTask());
+  newInputField.addEventListener("blur", () => {
+    const newTask = newInputField.value.trim();
+    if (newTask) {
+      taskData[i].task = newTask;
+      saveToLocalStorage();
+    }
+    displayTasks();
+  });
+};
